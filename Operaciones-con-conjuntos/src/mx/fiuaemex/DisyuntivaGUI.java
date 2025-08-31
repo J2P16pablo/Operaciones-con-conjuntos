@@ -43,7 +43,7 @@ public class DisyuntivaGUI {
         //crea la ventana principal
         JFrame frame = new JFrame("Verificación de Conjuntos Disyuntos");
         frame.setSize(500, 400); //tamaño 500 * 400 pixeles 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(null);
 
         // Instrucciones para que el usuario ingrese los elementos como se le piden
@@ -161,6 +161,9 @@ public class DisyuntivaGUI {
             }
         });
 
+        // CENTRAR LA VENTANA
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);
     }
 
@@ -193,5 +196,6 @@ public class DisyuntivaGUI {
         }
         //devolvemos la lista con numeros validos 
         return conjunto;
+
     }
 }
