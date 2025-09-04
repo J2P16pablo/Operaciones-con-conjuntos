@@ -1,1 +1,17 @@
+package mvc_produto_simetrico;
+
+import mvc_produto_simetrico.modelo_producto_simetrico;
+import mvc_produto_simetrico.vista_producto_simetrico;
+import mvc_produto_simetrico.controlador_producto_simetrico;
+
+public class mvc_produto_simetrico{
+    public static void main(String[] args) {
+        modelo_producto_simetrico modelo = new modelo_producto_simetrico();
+        vista_producto_simetrico vista = new vista_producto_simetrico();
+        controlador_producto_simetrico controlador = new controlador_producto_simetrico(modelo, vista);
+
+        controlador.ejecutarOperacion();
+    }
+}
+
 
