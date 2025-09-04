@@ -1,40 +1,29 @@
 package mvc_produto_simetrico;
-import java.util.*;
 
-public class modelo_producto_simetrico {
-    private Set<Integer> conjuntoA;
-    private Set<Integer> conjuntoB;
+import mvc_produto_simetrico.modelo_producto_simetrico;
+import mvc_produto_simetrico.vista_producto_simetrico;
+import java.util.Set;
 
-    public modelo_producto_simetrico() {
-        conjuntoA = new HashSet<>();
-        conjuntoB = new HashSet<>();
+public class controlador_producto_simetrico{
+    private modelo_producto_simetrico modelo;
+    private vista_producto_simetrico vista;
+
+    public controlador_producto_simetrico(modelo_producto_simetrico modelo, vista_producto_simetrico vista) {
+        this.modelo = modelo;
+        this.vista = vista;
     }
 
-    public void setConjuntoA(Set<Integer> conjuntoA) {
-        this.conjuntoA = conjuntoA;
-    }
+    public void ejecutarOperacion() {
+        Set<Integer> conjuntoA = vista.pedirConjunto("Conjunto A");
+        Set<Integer> conjuntoB = vista.pedirConjunto("Conjunto B");
 
-    public void setConjuntoB(Set<Integer> conjuntoB) {
-        this.conjuntoB = conjuntoB;
-    }
+        modelo.setConjuntoA(conjuntoA);
+        modelo.setConjuntoB(conjuntoB);
 
-    public Set<Integer> calcularProductoSimetrico() {
-        Set<Integer> resultado = new HashSet<>(conjuntoA);
-        resultado.addAll(conjuntoB); 
+        vista.mostrarConjuntos(modelo.getConjuntoA(), modelo.getConjuntoB());
 
-        Set<Integer> interseccion = new HashSet<>(conjuntoA);
-        interseccion.retainAll(conjuntoB); 
+        Set<Integer> resultado = modelo.calcularProductoSimetrico();
+        vista.mostrarResultado(resultado, "Producto Simétrico (A Δ B) o (A u B) - (A n B)");
 
-        resultado.removeAll(interseccion); 
-        return resultado;
-    }
-
-    public Set<Integer> getConjuntoA() {
-        return new HashSet<>(conjuntoA);
-    }
-
-    public Set<Integer> getConjuntoB() {
-        return new HashSet<>(conjuntoB);
     }
 }
-
